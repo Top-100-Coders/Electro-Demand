@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
+body {
+    font-family: 'Electrolize', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    background-color: #1b4a0c;
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+    text-align: center;
+    margin: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: white;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 100%;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #457a07;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #06460a;
+}
+
+/* Result section styles */
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+p {
+    text-align: center;
+    margin: 5px;
+    color: white;
+}
+
+/* Link styles */
+a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #007BFF;
+}
+
+a:hover {
+    text-decoration: underline;
+}

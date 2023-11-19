@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predict with Current values</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Electro-Demand</h1>
+    <form method="POST">
+        <label for="input_date">Enter a date (YYYY-MM):</label>
+        <input type="text" name="input_date" id="input_date" required><br>
+        <input type="submit" value="Predict">
+    </form>
+    <!-- {% if prediction %}
+    <h2>Prediction for Date: {{ prediction['Date'] }}</h2>
+    <p>Predicted Weather: {{ prediction['Predicted_Weather'] }}</p>
+    <p>Predicted Energy Demand (MWh): {{ prediction['Predicted_Energy_Demand_GWh'] }}</p>
+    <p>Suggested Power Source: {{ prediction['Suggested_Power_Source'] }}</p>
+    <p>Total Power Needed to be Produced (MWh): {{ prediction['Total_Power_Needed_GWh'] }}</p>
+    <p>Power Produced by Solar (MWh): {{ prediction['Power_Produced_by_Solar_GWh'] }}</p>
+    <p>Power Produced by Hydro (MWh): {{ prediction['Power_Produced_by_Hydro_GWh'] }}</p>
+    {% endif %}
+    {% if prediction %} -->
+<div class="prediction-box">
+    <div class="row">
+        <span class="label">Predicted Weather</span>
+        <span class="value">{{ prediction['Predicted_Weather'] }}</span>
+    </div>
+    <div class="row">
+        <span class="label">Predicted Energy Demand (MWh)</span>
+        <span class="value">{{ prediction['Predicted_Energy_Demand_GWh'] }}</span>
+    </div>
+    <div class="row">
+        <span class="label">Suggested Power Source</span>
+        <span class="value">{{ prediction['Suggested_Power_Source'] }}</span>
+    </div>
+    <div class="row">
+        <span class="label">Total Power Needed to be Produced (MWh)</span>
+        <span class="value">{{ prediction['Total_Power_Needed_GWh'] }}</span>
+    </div>
+    <div class="row">
+        <span class="label">Power Produced by Solar (MWh)</span>
+        <span class="value">{{ prediction['Power_Produced_by_Solar_GWh'] }}</span>
+    </div>
+    <div class="row">
+        <span class="label">Power Produced by Hydro (MWh)</span>
+        <span class="value">{{ prediction['Power_Produced_by_Hydro_GWh'] }}</span>
+    </div>
+    <div class="row">
+        <span class="label">Predicted Temperature (Celsius)</span>
+        <span class="value">{{ prediction['Predicted_Temperature_Celsius'] }}</span>
+    </div>
+    <div class="row">
+        <span class="label">Predicted Rainfall (mm)</span>
+        <span class="value">{{ prediction['Predicted_Rainfall_mm'] }}</span>
+    </div>
+    <!-- Display the Predicted Power Generation chart -->
+    <span class="label">Predicted Power Generation</span>
+
+    <div class="row">
+        <span class="chart">
+            <img src="data:image/png;base64,{{ prediction['Charts']['Predicted_Energy_Demand'] }}" alt="Predicted Power Generation">
+        </span>
+    </div>
+
+    <!-- Display the Predicted Weather Probability chart
+    <div class="row">
+        <span class="label">Predicted Weather Probability</span>
+        <span class="chart">
+            <img src="data:image/png;base64,{{ prediction['Charts']['Predicted_Weather'] }}" alt="Predicted Weather Probability">
+        </span>
+    </div> -->
+</div>
+<style>
+    .prediction-box {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-left: 300px;
+        margin-right: 300px;
+        border-radius: 5px;
+        color: white;
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .label {
+        flex: 1;
+        text-align: left;
+    }
+
+    .value {
+        flex: 1;
+        text-align: right;
+    }
+</style>
+{% endif %}
+
+    <a href="/predict_temperature_rainfall">Predict with Temperature and Rainfall</a>
+    <a href="/">Predict with date</a>
+
+</body>
+</html>
