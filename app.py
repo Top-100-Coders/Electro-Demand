@@ -9,6 +9,9 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import base64
 matplotlib.use('Agg')
+import openai
+
+openai.api_key = 'sk-********************************************'
 
 # Replace 'YOUR_API_KEY' with your actual API key
 api_key = 'b0ff80d841cb45b28e8194148231409'
@@ -140,7 +143,20 @@ def predict_for_user_input(input_date):
         'Charts': charts
 
     }
+def generate_report(predicted_weather, suggested_power_source):
+    # Define a prompt for the report generation
+    prompt = f"Based on the prediction, the weather is expected to be {predicted_weather}. The suggested power source is {suggested_power_source}. Generate a report summarizing the prediction."
 
+    # Call OpenAI API to generate a report
+    response = openai.Completion.create(
+        engine="text-davinci-002",
+        prompt=prompt,
+        max_tokens=150
+    )
+
+    # Extract the generated report from the OpenAI API response
+    generated_report = response['choices'][0]['text'].strip()
+    return generated_report
 # Function to predict for user input date, temperature, and rainfall
 def predict_for_user_input_temp_rain(input_date, input_temperature, input_rainfall):
     # Extract year and month from the input date
@@ -262,13 +278,17 @@ def predict_for_user_input_current(input_date, input_temperature, input_rainfall
 @app.route('/', methods=['GET', 'POST'])
 def index():
     prediction = None
-    
+    report = None
+
     if request.method == 'POST':
         user_input_date_str = request.form['input_date']
         user_input_date = pd.to_datetime(user_input_date_str, format='%Y-%m')
         prediction = predict_for_user_input(user_input_date)
-    
-    return render_template('index.html', prediction=prediction)
+
+        # Generate a report based on the prediction
+        report = generate_report(prediction['Predicted_Weather'], prediction['Suggested_Power_Source'])
+
+    return render_template('index.html', prediction=prediction, report=report)
 
 @app.route('/predict_temperature_rainfall', methods=['GET', 'POST'])
 def predict_with_temperature_rainfall():
