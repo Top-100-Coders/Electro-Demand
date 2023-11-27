@@ -1,7 +1,7 @@
 # Electro-Demand
 Kerala has seen a critical turnover in the climatic conditions in the last 4 years. Due to sudden climatic conditions the fluctuating water level in dams are causing to not meet the energy requirements of the state during times of high demand period and we have to buy electricity from other states. To tackle it we paln on creating a fully efficient integrated system that can predict as well as take input the climatic factors affecting like temperature, rainfall, etc and predict the weather condition which in turn will predict the type of energy source to be used for that climatic condition(solar/hydro), the energy demand during high peak demand period and the energy to be produced to meet that demand. 
 
-This web application is a sample of that system that predicts energy-related parameters including weather, energy demand, and power generation based on historical data. It utilizes machine learning models trained on a dataset containing weather, energy production, and demand information. Users can input a date and optionally provide temperature and rainfall values to receive predictions about energy-related factors.
+This web application is a sample of that system that predicts energy-related parameters including weather, energy demand, and power generation based on historical data and generate a report about the prediction. It utilizes machine learning models trained on a dataset containing weather, energy production, and demand information. Users can input a date and optionally provide temperature and rainfall values to receive predictions about energy-related factors.
 
 # Features
 1. Predicts weather conditions (sunny or rainy).
@@ -9,6 +9,7 @@ This web application is a sample of that system that predicts energy-related par
 3. Suggests the optimal power generation source (solar or hydro) depending on the weather.
 4. Calculates the total power needed to meet demand.
 5. Determines power generation by source (solar and hydro) for user-specified inputs.
+6. Generate a report about the prediction made using Open AI services.
 
 # Usage
 1. Usage
