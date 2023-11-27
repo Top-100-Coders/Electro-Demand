@@ -65,6 +65,10 @@
         </span>
     </div>
 </div>
+{% if report %}
+<h3>Generated Report:</h3>
+<p>{{ report }}</p>
+{% endif %}
 <style>
     .prediction-box {
         border: 1px solid #ccc;
